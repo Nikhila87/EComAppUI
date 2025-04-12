@@ -18,7 +18,7 @@ cartCount=0;
       this.cartCount = count;
     
     // this.cartService.viewCart().subscribe(items => {
-    //   this.cartService.updateCartCount(items.length); // 👈 update count with real backend data
+    //   this.cartService.updateCartCount(items.length); 
     // this.cartCount=items.length;
     // });
     });
@@ -29,7 +29,7 @@ cartCount=0;
     this.authService.login(this.username, this.password).subscribe({
             next: (data) => {
               console.log("Token received:", data.token);
-              localStorage.setItem('jwtToken', data.token); // ✅ Fix: Use 'jwtToken' instead of 'token'
+              localStorage.setItem('jwtToken', data.token); 
               this.cartService.refreshCartCount();
               
               this.router.navigate(['/product']);

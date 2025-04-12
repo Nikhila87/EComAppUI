@@ -17,8 +17,8 @@ export interface RegisterModel {
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/auth';
-  private jwtHelper = new JwtHelperService(); // ✅ Fix: Initialize JwtHelperService
+  private apiUrl = 'https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/auth'; //azure url
+  private jwtHelper = new JwtHelperService(); 
 
   constructor(private http: HttpClient, private router: Router,private cartService:CartService) {}
 
@@ -33,17 +33,17 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('jwtToken'); // ✅ Fix: Use 'jwtToken' instead of 'token'
+    localStorage.removeItem('jwtToken'); 
     this.router.navigate(['/login']);
   }
 
   isAuthenticated(): boolean {
     const token = localStorage.getItem('jwtToken');
-    return token ? !this.jwtHelper.isTokenExpired(token) : false; // ✅ Fix: Use injected JwtHelperService
+    return token ? !this.jwtHelper.isTokenExpired(token) : false; 
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('jwtToken'); // ✅ Fix: Check 'jwtToken'
+    return !!localStorage.getItem('jwtToken'); 
   }
   getUserRole(): string {
     return localStorage.getItem('userRole') || ''; // Fetch role from storage

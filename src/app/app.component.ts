@@ -20,7 +20,7 @@ export class AppComponent {
       this.cartCount = count;
     
     // this.cartService.viewCart().subscribe(items => {
-    //   this.cartService.updateCartCount(items.length); // 👈 update count with real backend data
+    //   this.cartService.updateCartCount(items.length); 
     // this.cartCount=items.length;
     });
 
