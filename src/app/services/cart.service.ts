@@ -55,7 +55,7 @@ export class CartService {
       password: "Nikki@123"
     };
     return this.http.post<CartItem>(`${this.apiUrl}`, payload, { headers }).subscribe(response => {
-      this.cartItems.push(response); // ✅ Optional: if you want to reflect updated cart
+      this.cartItems.push(response);
       this.cartCountSubject.next(this.cartItems.length);
       localStorage.setItem('cart', JSON.stringify(this.cartItems));
     }, error => {
@@ -77,9 +77,9 @@ export class CartService {
   //   return this.http.get<CartItem[]>(`${this.apiUrl}/user`, { headers });
   // }
   viewCart(): Observable<CartItem[]> {
-    const token = localStorage.getItem('jwtToken'); // ✅ Get Token
+    const token = localStorage.getItem('jwtToken');
         const headers = new HttpHeaders({
-          Authorization: `Bearer ${token}` // ✅ Attach token
+          Authorization: `Bearer ${token}` 
         });
         
     // alert(`${this.apiUrl}/user`);
@@ -101,10 +101,10 @@ export class CartService {
 
   // Delete from cart method (we'll use later if needed)
   deleteCartItem(id: number) {
-    const token = localStorage.getItem('jwtToken'); // ✅ Get Token
+    const token = localStorage.getItem('jwtToken');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
-     }); // ✅ Attach token
+     });
   
     // return this.http.delete(`${this.apiUrl}/${id}`,{headers});
     return this.http.delete(this.apiUrl+"/"+id,{headers});

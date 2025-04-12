@@ -21,18 +21,18 @@ private apiUrl="https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azureweb
   getProducts() : Observable<Products[]>
   {
     
-    // const token = localStorage.getItem('jwtToken'); // ✅ Get Token
-    // console.log('Token:', token); // ✅ Print token to verify
+    // const token = localStorage.getItem('jwtToken'); /
+    // console.log('Token:', token); 
 
     // const headers = new HttpHeaders({
-    //   Authorization: `Bearer ${token}` // ✅ Attach token
+    //   Authorization: `Bearer ${token}` 
     // });
 
     return this.http.get<any>(this.apiUrl).pipe(
       map(product => {
         if (!product.images || product.images.length === 0) {
           product.images = [ 
-            product.imageUrl // ✅ Add main image first
+            product.imageUrl 
             // "assets/DSC01271.jpg",
             // "assets/DSC012722.jpg"
           ];
@@ -47,9 +47,9 @@ private apiUrl="https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azureweb
 
   addProduct(product: Products, files: File[] | null): Observable<Products> {
   
-    const token = localStorage.getItem('jwtToken'); // ✅ Get Token
+    const token = localStorage.getItem('jwtToken'); 
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}` // ✅ Attach token
+      Authorization: `Bearer ${token}` 
     });
    
       const formData = new FormData();
@@ -83,9 +83,9 @@ private apiUrl="https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azureweb
 }
 
 updateProduct(product: Products): Observable<any> {
-  const token = localStorage.getItem('jwtToken'); // ✅ Get Token
+  const token = localStorage.getItem('jwtToken'); 
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}` // ✅ Attach token
+      Authorization: `Bearer ${token}`
     });
   return this.http.put(`${this.apiUrl}/${product.id}`, product,{headers});
 }
