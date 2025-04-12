@@ -1,0 +1,34 @@
+<!-- <a [routerLink]="['/product']">View Product</a> -->
+<div class="form-container">
+<form (submit)="addProduct()">
+    <!-- <mat-form-field appearance="outline"> -->
+       
+        <!-- <mat-form-field appearance="outline">
+            <mat-label>Product Name</mat-label>
+            <input matInput type="text" formControlName="newProduct.name">
+          </mat-form-field> -->
+        <mat-form-field  appearance="outline" floatLabel="always"><mat-label>Product Name</mat-label><input matInput type="text"  [(ngModel)]="newProduct.name" name="Enter name" required/> </mat-form-field>
+        <mat-form-field appearance="outline" floatLabel="always"> <mat-label>Description</mat-label> <input matInput type="text" [(ngModel)]="newProduct.description" name="Enter description" required /> </mat-form-field>
+        <mat-form-field appearance="outline" floatLabel="always">    <mat-label>Price</mat-label> <input matInput type="number" [(ngModel)]="newProduct.price" name="Enter price"  required /> </mat-form-field>
+        <mat-form-field appearance="outline" floatLabel="always">   <mat-label>Image</mat-label><input matInput type="text" [(ngModel)]="newProduct.images" name="EnterimageUrl"  required /> </mat-form-field>
+        <!-- <input type="file" (change)="onFileSelected($event)" accept="image/*" required /> -->
+    <!-- <input type="text" [(ngModel)]="newProduct.name" name="name" placeholder="Product Name" required /> -->
+   <div class="file-input">
+      <label for="image">Upload Image</label>
+      <input type="file" id="image" (change)="onFileSelected($event)" accept="image/*" required  multiple />
+    </div>
+
+    <!-- Preview Selected Image -->
+    <ul *ngIf="selectedFile?.length">
+      <li *ngFor="let file of selectedFile">{{ file.name }}</li>
+    </ul>
+
+    <button type="submit" mat-raised-button color="primary">Add Product</button>
+    <!-- <input type="file" (c.hange)="onFileSelected($event)" /> -->
+    <!-- <button (click)="uploadImage()">Upload Image</button> -->
+    
+    <!-- <img *ngIf="imageUrl" [src]="imageUrl" alt="Uploaded Image" width="200px" /> -->
+    
+    <!-- *ngIf="authService.isAdmin()" -->
+</form>
+</div>

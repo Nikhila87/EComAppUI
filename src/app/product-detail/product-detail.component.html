@@ -1,0 +1,23 @@
+<div *ngIf="product" class="product-container">
+  <!-- Slideshow -->
+  <div class="slideshow-container" *ngIf="product.images?.length">
+    <button class="prev" (click)="prevImage()">❮</button>
+    <img [src]="product.images[currentImageIndex]" alt="Product Image" class="slideshow-image" />
+    <button class="next" (click)="nextImage()">❯</button>
+  </div>
+
+  <!-- Product Details (like Amazon) -->
+  <div class="product-details">
+    <h2 class="product-title">{{ product.name }}</h2>
+    <p class="product-price">₹ {{ product.price }}</p>
+    <p class="product-description">{{ product.description }}</p>
+
+    <ul class="product-features" *ngIf="product.features?.length">
+      <li *ngFor="let feature of product.features">• {{ feature }}</li>
+    </ul>
+    <button mat-raised-button color="primary" (click)="addToCart(product)">
+      Add to Cart
+    </button>
+    <!-- <button class="back-button" routerLink="/product">⬅ Back to Products</button> -->
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="container">
+  <mat-card class="product-card" *ngFor="let product of products">
+    
+    <div class="image-container">
+      <!-- <img mat-card-image src="{{ product.imageUrl }}"> -->
+      <img mat-card-image [src]="product.imageUrl.split(',')[0]" alt="Product Image"/>
+      <!-- Add to Cart Icon at Bottom -->
+      <button mat-icon-button class="cart-icon" >
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+    </div>
+
+    <mat-card-title>{{ product.name }}</mat-card-title>
+    <mat-card-content>
+      <p>{{ product.description }}</p>
+      <h4>Price: ${{ product.price }}</h4>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary">Buy Now</button>
+      <button mat-raised-button  color="primary"  [routerLink]="['/product', product.id]">View Details</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<ng-template #noData>
+  <p>No products available.</p>
+</ng-template>

@@ -1,0 +1,23 @@
+
+<form (ngSubmit)="editProduct(selectedProduct)">
+    <input [(ngModel)]="selectedProduct.name" name="name" required />
+    <input [(ngModel)]="selectedProduct.price" name="price" required />
+    <input [(ngModel)]="selectedProduct.description" name="description" required />
+    <!-- <input [(ngModel)]="selectedProduct.imageUrl" name="imageUrl" required /> -->
+    <!-- Add other fields as needed -->
+    <!-- *ngIf="authService.isAdmin()" -->
+    <button mat-button type="submit">Update Product</button>
+  </form> 
+ 
+  <div class="product-list" *ngIf="products.length > 0;">
+    <div  class="product-item"*ngFor="let product of products">
+      <div class="product-details">
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.description }}</p>
+      <p>Price: {{ product.price | currency }}</p>
+    </div>
+      <!-- <button (click)="deleteProduct(this.product.id)" *ngIf="authService.isAdmin()">Delete</button> -->
+      <button class="edit-btn" (click)="selectProduct(product)" >Edit</button>
+      <!-- *ngIf="authService.isAdmin()" -->
+    </div>
+  </div>

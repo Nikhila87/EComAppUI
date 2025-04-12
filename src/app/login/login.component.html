@@ -1,0 +1,10 @@
+<div>
+    <h2>Login</h2>
+
+    <input type="text" [(ngModel)]="username" placeholder="Username">
+    <input type="password" [(ngModel)]="password" placeholder="Password">
+    <button mat-button (click)="login()">Login</button>
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger">
+  {{ errorMessage }}
+</div>

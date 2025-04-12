@@ -1,0 +1,41 @@
+.image-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+  
+  /* Cart Icon Styling */
+  .cart-icon {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* Centered by default */
+    width: 45px;
+    height: 45px;
+    background: white;
+    color: #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 1; /* Always visible */
+  }
+  
+  /* Hover Effect - Moves Left */
+  .image-container:hover .cart-icon {
+    transform: translateX(-70%); /* Moves to the left */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3); /* Adds depth */
+  }
+  
+  /* Mat Icon Styling */
+  .cart-icon mat-icon {
+    font-size: 22px;
+  }
+  mat-button
+  {
+    color:white;
+  }
+  

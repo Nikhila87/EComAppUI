@@ -1,0 +1,24 @@
+<h2>Your Cart</h2>
+
+<div *ngIf="cartItems.length === 0">Your cart is empty.</div>
+
+<div *ngFor="let item of cartItems" style="font-family: 'Josefin Sans';">
+  <img [src]="item.product.imageUrl.split(',')[0]" width="100" />
+  <div>
+    <h3>{{ item.product.name }}</h3>
+    <p>Price: ₹{{ item.product.price }}</p>
+    <p>Quantity: {{ item.quantity }}</p>
+   
+  </div>
+  <div style="display:flex;background-color: white; height:50px; border-radius: 20px;width:110px;border: yellow solid 3px;">
+    <button (click)="decreaseQuantity(item)" style="background-color: transparent;color:black">-</button>
+    <button style="background-color: transparent;color:black">{{ item.quantity }}</button>
+    <button (click)="increaseQuantity(item)" style="background-color: transparent;color: black;">+</button>
+  
+  <button (click)="deleteItem(item.id)" style="background-color: transparent;color: black;height:10px">
+    <mat-icon color="warn">delete</mat-icon>
+  </button>
+    </div>
+</div>
+
+<h3>Total: ₹{{ totalPrice }}</h3>

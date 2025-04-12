@@ -1,0 +1,50 @@
+.product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 20px;
+    align-items: center; /* Centers the product cards */
+  }
+  
+  .product-item {
+    font-family: 'Josefin Sans', sans-serif !important;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 15px;
+   
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Reduced width */
+    max-width: 700px; /* Prevents it from stretching too wide */
+  }
+  
+  .product-img {
+    width: 80px; /* Smaller image */
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .product-details {
+    flex: 1;
+    padding: 0 15px;
+  }
+  
+  .edit-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 14px; /* Smaller button text */
+  }
+  
+  .edit-btn:hover {
+    background-color: #cc0000;
+  }
+  
