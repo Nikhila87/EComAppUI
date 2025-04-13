@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-   apiBaseUrl: 'https://your-api-app.azurewebsites.net/api'
+   apiBaseUrl: 'https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/'
 };
