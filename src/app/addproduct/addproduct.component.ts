@@ -18,7 +18,7 @@ export class AddproductComponent implements OnInit {
 
 
 
-  onFilesSelected(event: any): void {
+  onFileSelected(event: any): void {
     this.selectedFile = Array.from(event.target.files);
   }
 addProduct() {
