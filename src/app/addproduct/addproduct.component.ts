@@ -16,15 +16,10 @@ export class AddproductComponent implements OnInit {
     
   }
 
-  onFileSelected(event: any) {
-    const input = event.target as HTMLInputElement;
 
-    const file = event.target as HTMLInputElement; // Get the selected file
-    if (file.files) {
-      this.selectedFile = Array.from(file.files);  // Store the file
-     
-      // this.newProduct.imageUrl = file.name; // Store filename as image URL (optional)
-    }
+
+  onFilesSelected(event: any): void {
+    this.selectedFile = Array.from(event.target.files);
   }
 addProduct() {
  

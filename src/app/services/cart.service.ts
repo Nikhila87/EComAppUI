@@ -41,6 +41,7 @@ export class CartService {
   }
 
   addToCart(product: any) {
+    this.refreshCartCount();
     const token = localStorage.getItem('jwtToken'); // ✅ Get Token
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`

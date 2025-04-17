@@ -53,8 +53,9 @@ export class ProductDetailComponent implements OnInit {
 
 
   addToCart(product: any) {
-    this.cartService.addToCart(product);
     this.cartService.refreshCartCount();
+    this.cartService.addToCart(product);
+    
   }
 
 

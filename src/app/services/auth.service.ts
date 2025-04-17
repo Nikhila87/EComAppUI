@@ -23,7 +23,9 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router,private cartService:CartService) {}
 
   login(username: string, password: string): Observable<any> {
+   
     this.cartService.refreshCartCount();
+    
     return this.http.post<any>(`${this.apiUrl}/login`, { username, password })
       
   }
