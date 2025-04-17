@@ -14,7 +14,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    this.loadCart();
   this.cartService.refreshCartCount();
     this.cartService.viewCart().subscribe({
       next: (data) => {
@@ -43,6 +43,7 @@ export class CartComponent implements OnInit {
 
   calculateTotal(): void {
     this.totalPrice = this.cartItems.reduce((sum, item) => {
+   
       return sum + (item.product.price * item.quantity);
     }, 0);
   }
