@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, tap, throwError } from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 export interface Products {
  
@@ -94,8 +94,9 @@ getProductById(id: string) {
   return this.http.get<Products>(`${this.apiUrl}/${id}`);
 }
 searchProductsByName(name: string): Observable<Products[]> {
-  alert("product name"+name);
-  return this.http.get<Products[]>(`${this.apiUrl}/search?name=strdsfdfing`);
+  alert("product name"+name)
+  const params = new HttpParams().set('name', name);
+  return this.http.get<Products[]>(`${this.apiUrl}/search`,{params});
 }
 
 }
