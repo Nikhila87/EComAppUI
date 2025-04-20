@@ -3,6 +3,7 @@ import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
 import { CartService } from './services/cart.service';
 import { count } from 'rxjs';
+import { ProductService } from './services/product.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,7 +12,9 @@ import { count } from 'rxjs';
 
 export class AppComponent {
   cartCount = 0;
-  constructor(public authService: AuthService,public router: Router,private cartService: CartService) {}
+  
+  products: any;
+  constructor(public authService: AuthService,public router: Router,private cartService: CartService,private productService: ProductService) {}
   title = 'EComApp';
 
   ngOnInit() {
@@ -27,5 +30,14 @@ export class AppComponent {
     this.cartService.refreshCartCount();
     
   }
+  searchName: string = '';
 
+  onSearch() {
+    if (this.searchName.trim()) {
+      this.productService.searchProductsByName(this.searchName).subscribe({
+        next: (data:any) => this.products = data,
+        error: (err:any) => console.log(err)
+      });
+    }
+  }
 }

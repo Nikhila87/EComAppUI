@@ -93,7 +93,9 @@ getProductById(id: string) {
   
   return this.http.get<Products>(`${this.apiUrl}/${id}`);
 }
-
+searchProductsByName(name: string): Observable<Products[]> {
+  return this.http.get<Products[]>(`${this.apiUrl}/products/search?name=${name}`);
+}
 
 }
 export const MOCK_PRODUCTS = [
