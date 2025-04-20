@@ -94,7 +94,7 @@ getProductById(id: string) {
   return this.http.get<Products>(`${this.apiUrl}/${id}`);
 }
 searchProductsByName(name: string): Observable<Products[]> {
-  return this.http.get<Products[]>(`${this.apiUrl}/products/search?name=${name}`);
+  return this.http.get<Products[]>(`${this.apiUrl}/search?name=${name}`);
 }
 
 }
