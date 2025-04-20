@@ -97,8 +97,9 @@ searchProductsByName(name: string): Observable<any> {
   alert("product name"+name);
   const params = new HttpParams().set('name', name);
  alert(`${this.apiUrl}/search?name=${name}`);
- alert(`${this.apiUrl}/search,${params}`);
-  return this.http.get<any>(`${this.apiUrl}/search`,{params});
+ alert(`${this.apiUrl}/search?${params}`);
+  // return this.http.get<any>(`${this.apiUrl}/search`,{params});
+  return this.http.get<any>(`${this.apiUrl}/?name=${name}`);
 }
 
 }
