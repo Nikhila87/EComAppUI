@@ -13,7 +13,7 @@ import { ProductService } from './services/product.service';
 export class AppComponent {
   cartCount = 0;
   
-  products: any;
+  products:any[]=[];
   constructor(public authService: AuthService,public router: Router,private cartService: CartService,private productService: ProductService) {}
   title = 'EComApp';
 
