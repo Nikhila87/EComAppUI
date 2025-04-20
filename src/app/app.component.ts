@@ -34,9 +34,14 @@ export class AppComponent {
 
   onSearch() {
     if (this.searchName.trim()) {
+      alert(this.searchName.trim());
       this.productService.searchProductsByName(this.searchName).subscribe({
-        next: (data:any) => this.products = data,
-        error: (err:any) => console.log(err)
+        next: (response) => {
+          this.products = response;
+        },
+        error: (err) => {
+          console.log('Error loading products:', err);
+        }
       });
     }
   }
