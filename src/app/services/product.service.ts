@@ -94,6 +94,7 @@ getProductById(id: string) {
   return this.http.get<Products>(`${this.apiUrl}/${id}`);
 }
 searchProductsByName(name: string): Observable<Products[]> {
+  alert("product name"+name);
   return this.http.get<Products[]>(`${this.apiUrl}/search?name=strdsfdfing`);
 }
 
