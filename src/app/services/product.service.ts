@@ -93,10 +93,10 @@ getProductById(id: string) {
   
   return this.http.get<Products>(`${this.apiUrl}/${id}`);
 }
-searchProductsByName(name: string): Observable<Products[]> {
-  alert("product name"+name)
+searchProductsByName(name: string): Observable<any> {
+  alert("product name"+name);
   const params = new HttpParams().set('name', name);
-  return this.http.get<Products[]>(`${this.apiUrl}/search`,{params});
+  return this.http.get<any>(`${this.apiUrl}/search`,{params});
 }
 
 }
