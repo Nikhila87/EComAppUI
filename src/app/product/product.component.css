@@ -38,4 +38,38 @@
   {
     color:white;
   }
+  .product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* or space-between */
+    gap: 20px;
+    padding: 20px;
+  }
   
+  .product-card {
+    width: 300px;
+  }
+  .product-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.product-card {
+  width: 300px;
+  position: relative;
+}
+
+.image-container {
+  position: relative;
+}
+
+.cart-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: white;
+  border-radius: 50%;
+}

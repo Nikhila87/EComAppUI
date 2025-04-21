@@ -3,7 +3,7 @@ import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
 import { CartService } from './services/cart.service';
 import { count } from 'rxjs';
-import { ProductService } from './services/product.service';
+import { Products, ProductService } from './services/product.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,9 +11,12 @@ import { ProductService } from './services/product.service';
 })
 
 export class AppComponent {
+  searchText = '';
   cartCount = 0;
-  
-  products:any[]=[];
+  filteredProducts: Products[] = [];
+  isSearching: boolean = false; 
+  products: any;
+  searchResults='';
   constructor(public authService: AuthService,public router: Router,private cartService: CartService,private productService: ProductService) {}
   title = 'EComApp';
 
@@ -30,19 +33,16 @@ export class AppComponent {
     this.cartService.refreshCartCount();
     
   }
-  searchName: string = '';
-
   onSearch() {
-    if (this.searchName.trim()) {
-      alert(this.searchName.trim());
-      this.productService.searchProductsByName(this.searchName).subscribe({
-        next: (response) => {
-          this.products = response;
-        },
-        error: (err) => {
-          console.log('Error loading products:', err);
-        }
-      });
+    const trimmed = this.searchText.trim();
+    if (trimmed) {
+      this.router.navigate(['/search', trimmed]);
+    } else {
+      this.router.navigate(['/']);
     }
   }
+  
+
+  
+  
 }

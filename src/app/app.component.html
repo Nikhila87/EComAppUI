@@ -510,9 +510,13 @@
     
     
   <!-- <img src="assets/images/logo.png" alt="" srcset="" height="200" width="200"/> -->
-  <input type="text" [(ngModel)]="searchName" placeholder="Search product name..." />
+  <input type="text" [(ngModel)]="searchText" placeholder="Search products" />
   <button (click)="onSearch()">Search</button>
+  
+
 </div>
+<!-- <app-product [searchText]="searchText"></app-product> -->
+
   <!-- <span>ECom App</span> -->
  
   <mat-toolbar class="bottom-navbar">

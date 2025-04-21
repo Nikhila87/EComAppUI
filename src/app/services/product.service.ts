@@ -15,34 +15,22 @@ images:string[]
   providedIn: 'root'
 })
 export class ProductService {
-// private apiUrl="http://localhost:5290/api/Products";
-private apiUrl="https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/Products";
+private apiUrl="https://localhost:5001/api/Products";
+// private apiUrl="https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/Products";
   constructor(private http:HttpClient) { }
-  getProducts() : Observable<Products[]>
-  {
-    
-    // const token = localStorage.getItem('jwtToken'); /
-    // console.log('Token:', token); 
-
-    // const headers = new HttpHeaders({
-    //   Authorization: `Bearer ${token}` 
-    // });
-
-    return this.http.get<any>(this.apiUrl).pipe(
-      map(product => {
-        if (!product.images || product.images.length === 0) {
-          product.images = [ 
-            product.imageUrl 
-            // "assets/DSC01271.jpg",
-            // "assets/DSC012722.jpg"
-          ];
-        }
-        return product;
+  getProducts(): Observable<Products[]> {
+    return this.http.get<Products[]>(this.apiUrl).pipe(
+      map(products => {
+        return products.map(product => {
+          if (!product.images || product.images.length === 0) {
+            product.images = [product.imageUrl];
+          }
+          return product;
+        });
       })
-    );;
-    // return this.http.get<Products[]>(this.apiUrl)
+    );
+  }
   
-}
 
 
   addProduct(product: Products, files: File[] | null): Observable<Products> {
@@ -93,14 +81,16 @@ getProductById(id: string) {
   
   return this.http.get<Products>(`${this.apiUrl}/${id}`);
 }
-searchProductsByName(name: string): Observable<any> {
+searchProductsByName(name: string): Observable<Products[]> {
 
   const params = new HttpParams().set('name', name);
-
-  // return this.http.get<any>(`${this.apiUrl}/search`,{params});
-  return this.http.get<any>(`${this.apiUrl}/?name=${name}`);
+  return this.http.get<Products[]>(`${this.apiUrl}/search?name=${name}`).pipe(
+    map((products: Products[]) => products.map(product => ({
+      ...product,
+      images: product.imageUrl ? product.imageUrl.split(',') : []
+    })))
+  );
 }
-
 }
 export const MOCK_PRODUCTS = [
   {
