@@ -15,8 +15,8 @@ images:string[]
   providedIn: 'root'
 })
 export class ProductService {
-private apiUrl="https://localhost:5001/api/Products";
-// private apiUrl="https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/Products";
+// private apiUrl="https://localhost:5001/api/Products";
+private apiUrl="https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/Products";
   constructor(private http:HttpClient) { }
   getProducts(): Observable<Products[]> {
     return this.http.get<Products[]>(this.apiUrl).pipe(
