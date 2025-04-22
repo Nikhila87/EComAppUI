@@ -1,6 +1,21 @@
+<div class="sort-container">
+  <label for="sort">Sort by:</label>
+  <select id="sort" (change)="onSortChange($event)">
+    <option value="">-- Select --</option>
+    <option value="nameAsc">Name (A-Z)</option>
+    <option value="nameDesc">Name (Z-A)</option>
+    <option value="priceAsc">Price (Low to High)</option>
+    <option value="priceDesc">Price (High to Low)</option>
+  </select>
+</div>
+<!-- <div *ngIf="loading" class="spinner-container">
+  <mat-spinner></mat-spinner>
+</div> -->
 <div class="product-container">
+
+
   <mat-card class="product-card" *ngFor="let product of products">
-    
+ 
     <div class="image-container">
       <!-- <img mat-card-image src="{{ product.imageUrl }}"> -->
       <img mat-card-image [src]="product.imageUrl.split(',')[0]" alt="Product Image"/>
@@ -13,15 +28,28 @@
     <mat-card-title>{{ product.name }}</mat-card-title>
     <mat-card-content>
       <p>{{ product.description }}</p>
-      <h4>Price: ${{ product.price }}</h4>
+      <h4>Price: Rs.{{ product.price }}</h4>
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button color="primary">Buy Now</button>
       <button mat-raised-button  color="primary"  [routerLink]="['/product', product.id]">View Details</button>
     </mat-card-actions>
   </mat-card>
+  
 </div>
+<!-- <div *ngIf="loading" class="spinner-container">
+  <mat-spinner></mat-spinner>
+</div> -->
 
+ <!-- <div class="pagination-container">
+   <button (click)="loadPreviousPage()" [disabled]="page <= 1">Previous</button> -->
+  <!-- <button (click)="loadNextPage()" [disabled]="(page * pageSize) >= totalProducts">Next</button> 
+</div>-->
+ <div style="text-align: center; margin-top: 20px;" *ngIf="loading" class="spinner-container">
+  <mat-progress-spinner mode="indeterminate" diameter="40"></mat-progress-spinner>
+</div> 
+<button mat-raised-button color="primary" class="end-message" *ngIf="endofproducts && !loading">No more products</button>
+<!-- <div *ngIf="endofproducts && !loading" class="end-message">No more products to load.</div> -->
 <ng-template #noData>
   <p>No products available.</p>
 </ng-template>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { ProductService,Products } from '../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 // import { Products } from '../../models/product.model';
@@ -21,8 +21,11 @@ cartCount=0;
   products: Products[] = [];
   allProducts: Products[] = []; 
   @Input() searchText: string = '';
-
- 
+ page: number = 1;
+  pageSize: number = 8;  // Adjust the page size as needed
+  totalProducts: number = 0;  // Total number of products in the database
+  loading: boolean = false;
+  endofproducts:boolean=false;
   constructor(private route: ActivatedRoute,private productService:ProductService,public authService:AuthService,public cartService:CartService){}
 
 
@@ -55,15 +58,93 @@ cartCount=0;
     }
 
    
-
-   loadAllProducts() {
+//Pagination
+  //  loadAllProducts() {
+  //   this.productService.getProducts().subscribe(products => {
+  //     // this.products = products;
+  //     this.allProducts = products;
+  //     this.totalProducts = products.length;  
+  //     this.updatePagedProducts();
+  //   });
+  // }
+  //Scrolling
+  loadAllProducts() {
+    this.loading = true;
     this.productService.getProducts().subscribe(products => {
       this.products = products;
+      this.allProducts=products
+        this.products = this.allProducts.slice(0, this.pageSize);
+      this.loading = false;
     });
   }
+  updatePagedProducts() {
+    const start = (this.page - 1) * this.pageSize;
+    const end = start + this.pageSize;
+    this.products =this.allProducts.slice(start, end);  
+  }
+  onSortChange(event: Event) {
+    const selectElement = event.target as HTMLSelectElement;
+    const selectedValue = selectElement.value;
+  switch (selectedValue) {
+    case 'nameAsc':
+      this.products.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case 'nameDesc':
+      this.products.sort((a, b) => b.name.localeCompare(a.name));
+      break;
+    case 'priceAsc':
+      this.products.sort((a, b) => a.price - b.price);
+      break;
+    case 'priceDesc':
+      this.products.sort((a, b) => b.price - a.price);
+      break;
+    default:
+      // Optionally reload original list if needed
+      break;
+  }
+}
+//Pagination code
+// loadNextPage() {
+//   if ((this.page * this.pageSize) < this.totalProducts) {
+//     this.page++;
+//     this.updatePagedProducts();  
+//   }
+// }w
+//infine scrolling code
+loadNextPage() {
+  if (this.loading) return;
+
+  this.loading = true;
+  setTimeout(() => {
+    this.pageSize += 10;
+  this.productService.getProducts().subscribe(products => {
+    this.products = [...this.products, ...products];
+    this.loading = false;
+  });
+},4000);
+}
+@HostListener("window:scroll", [])
+  onScroll(): void {
+    const threshold = 300; // Distance from bottom to trigger
+    const position = window.innerHeight + window.scrollY;
+    const height = document.body.scrollHeight;
+
+    if (position > height - threshold && this.products.length < this.allProducts.length) {
+      this.loadNextPage();
+    }
+    else{
+      this.endofproducts=true;
+    }
+  }
+loadPreviousPage() {
+  if (this.page > 1) {
+    this.page--;
+    this.updatePagedProducts();  
+  }
+}
 }
    
- 
+
 
 
 

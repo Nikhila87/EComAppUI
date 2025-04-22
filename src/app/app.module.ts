@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ProductComponent } from './product/product.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -27,6 +27,7 @@ import { CartComponent } from './cart/cart.component';
   declarations: [
     AppComponent,
     ProductComponent,
+    
     LoginComponent,
     RegisterComponent,
     DeleteComponent,
@@ -39,6 +40,7 @@ import { CartComponent } from './cart/cart.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatProgressSpinnerModule,
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,

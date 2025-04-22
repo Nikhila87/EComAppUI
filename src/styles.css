@@ -81,7 +81,13 @@ input {
 .mat-button, .mat-toolbar, .mat-card, .mat-menu-item, .mat-list-item {
     font-family: var(--main-font) !important;
     background-color:  #ff4d4d;;
-    color:white;
+    /* color:white; */
+  }
+  .spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
   }
 
   .mat-typography,
