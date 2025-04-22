@@ -43,8 +43,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* or space-between */
-    gap: 20px;
-    padding: 20px;
+    gap: 10px;
+    padding: 10px;
   }
   
 
@@ -72,10 +72,11 @@
 }
 .end-message{
   font-family: Josefin Sans;
-  
+  position: relative;
   color: white;
   display: block;
   padding:2px;
-  margin-left:37rem;
+  top:10px;
+  margin-left:35rem;
 width:180px;
 }
