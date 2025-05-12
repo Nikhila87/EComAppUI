@@ -1,0 +1,11 @@
+<h2>Confirm Payment</h2>
+<p>Total: Rs.{{ totalAmount }}</p>
+<!-- <p>Shipping Address: {{ shippingAddress }}</p> -->
+<div *ngIf="shippingAddress">
+    <p>Name: {{ shippingAddress.fullName }}</p>
+    <p>Street: {{ shippingAddress.street }}</p>
+    <p>City: {{ shippingAddress.city }}</p>
+    <p>Zip Code: {{ shippingAddress.zipCode }}</p>
+    <p>Country: {{ shippingAddress.country }}</p>
+  </div>
+<button (click)="checkout()" mat-button>Pay with Stripe</button>

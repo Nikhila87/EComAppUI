@@ -6,7 +6,7 @@
     <button class="next" (click)="nextImage()">❯</button>
   </div>
 
-  <!-- Product Details (like Amazon) -->
+
   <div class="product-details">
     <h2 class="product-title">{{ product.name }}</h2>
     <p class="product-price">₹ {{ product.price }}</p>
@@ -20,4 +20,37 @@
     </button>
     <!-- <button class="back-button" routerLink="/product">⬅ Back to Products</button> -->
   </div>
+
+  <div class="review-section">
+    <h3>Add a Review</h3>
+    <form (ngSubmit)="submitReview()" #reviewForm="ngForm">
+      <input
+        type="text"
+        name="userId"
+        [(ngModel)]="newReview.userId"
+        placeholder="Your Name"
+        required
+      />
+  
+      <select name="rating" [(ngModel)]="newReview.rating" required>
+        <option value="">Select Rating</option>
+        <option *ngFor="let star of [1, 2, 3, 4, 5]" [value]="star">{{ star }}</option>
+      </select>
+  
+      <textarea
+        name="comment"
+        [(ngModel)]="newReview.comment"
+        placeholder="Write your review"
+        required
+      ></textarea>
+  
+      <button type="submit" [disabled]="!reviewForm.form.valid">Submit Review</button>
+    </form>
+  
+    <div *ngFor="let r of reviews" class="review-item">
+      <strong>{{ r.userId }}</strong> - ★{{ r.rating }}<br />
+      {{ r.comment }}
+    </div>
+  </div>
+  
 </div>

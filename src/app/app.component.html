@@ -485,8 +485,8 @@
 
 <div class="top-navbar">
 <!-- <mat-toolbar color="primary" class="navbar"> -->
-  <!-- <div class="logo">Buy<span>Haven</span></div> -->
- <svg width="573" height="96" viewBox="0 0 573 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <div class="logo">Shop Easy</div>
+ <!-- <svg width="573" height="96" viewBox="0 0 573 96" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_5_13)">
 <path d="M17.36 22.784C21.072 22.528 24.352 22.4 27.2 22.4C35.104 22.4 39.056 25.04 39.056 30.32C39.056 32.304 38.48 34.016 37.328 35.456C36.176 36.864 34.336 37.824 31.808 38.336C34.24 38.624 36.16 39.36 37.568 40.544C38.976 41.728 39.68 43.792 39.68 46.736C39.68 52.912 35.728 56 27.824 56H17.36V22.784ZM21.344 55.52H27.824C30.672 55.52 32.688 54.784 33.872 53.312C35.088 51.808 35.696 49.52 35.696 46.448C35.696 43.376 35.088 41.328 33.872 40.304C32.656 39.28 30.848 38.736 28.448 38.672H21.344V55.52ZM27.2 22.88C25.344 22.88 23.392 22.992 21.344 23.216V38.192H28.448C32.96 38 35.216 35.408 35.216 30.416C35.216 27.984 34.544 26.128 33.2 24.848C31.856 23.536 29.856 22.88 27.2 22.88ZM67.823 22.4H68.447V41.6C68.447 46.624 67.455 50.32 65.471 52.688C63.487 55.024 60.895 56.192 57.695 56.192C55.679 56.192 53.967 56.016 52.559 55.664C51.151 55.28 49.823 54.592 48.575 53.6C46.015 51.616 44.735 47.616 44.735 41.6V22.4H48.719V41.552C48.719 47.376 49.599 51.264 51.359 53.216C52.255 54.176 53.183 54.832 54.143 55.184C55.135 55.536 56.319 55.712 57.695 55.712C60.767 55.712 63.215 54.592 65.039 52.352C66.895 50.08 67.823 46.48 67.823 41.552V22.4ZM94.7945 22.4C95.4025 23.008 95.7065 23.792 95.7065 24.752C95.7065 25.552 95.5305 26.368 95.1785 27.2L86.5865 44.624V56H82.6025V45.68L73.0025 22.4H77.0825L86.2505 44.048L94.6025 27.2C94.9545 26.4 95.1305 25.568 95.1305 24.704C95.1305 23.84 94.8905 23.168 94.4105 22.688L94.7945 22.4Z" fill="black"/>
 <path d="M195.08 60.1905H127.133L114.067 13.8901H208.146L195.08 60.1905Z" fill="#334B79"/>
@@ -505,13 +505,13 @@
 <rect width="573" height="96" fill="white"/>
 </clipPath>
 </defs>
-</svg>
+</svg> -->
 
     
-    
+   <!-- <div style="text-align: left;font-weight: bold;font-size: x-large;">ShopEasy</div>  -->
   <!-- <img src="assets/images/logo.png" alt="" srcset="" height="200" width="200"/> -->
   <input type="text" [(ngModel)]="searchText" placeholder="Search products" />
-  <button (click)="onSearch()">Search</button>
+  <button (click)="onSearch()" mat-button>Search</button>
   
 
 </div>
@@ -534,7 +534,8 @@
     <a   *ngIf="router.url!='/product'" routerLink="/product">View Product</a>
     <a  *ngIf="router.url!='/delete'  && authService.isAdmin()" routerLink="/delete">Delete Products</a>
    
-    <button   (click)="authService.logout()" style="position:absolute; right:80px;">Logout</button> 
+    <button  mat-button (click)="authService.logout()" style="right:70px;position:absolute;top:100px ">Logout</button> 
+    <button  mat-button routerLink="/myorders" style="right:160px;position:absolute;top:100px ">My Orders</button> 
   </div>
 <span class="spacer"></span>
 

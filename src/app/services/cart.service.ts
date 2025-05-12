@@ -11,7 +11,8 @@ import { CartItem } from '../models/cart-item.model';
 export class CartService {
   private cartItems: any[] = [];
   // private cartCountSubject = new BehaviorSubject<number>(this.getSavedCartCount());
-  private apiUrl = 'https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/Cart'; // 🔁 Update if needed
+  // private apiUrl = 'https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/Cart'; // 🔁 Update if needed
+  private apiUrl = "https://localhost:5001/api/Cart";
   // cartCount$ = this.cartCountSubject.asObservable();
   private cartCountSubject = new BehaviorSubject<number>(0);
   cartCount$ = this.cartCountSubject.asObservable();
@@ -42,7 +43,7 @@ export class CartService {
 
   addToCart(product: any) {
     this.refreshCartCount();
-    const token = localStorage.getItem('jwtToken'); // ✅ Get Token
+    const token = localStorage.getItem('jwtToken');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
@@ -91,7 +92,7 @@ export class CartService {
   updateCartItem(item: any): Observable<any> {
     const token = localStorage.getItem('jwtToken');
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-    return this.http.put(`${this.apiUrl}/update`, item, { headers });
+    return this.http.put(`${this.apiUrl}/${item.productId}`, item.quantity, { headers });
   }
  
 
@@ -120,5 +121,13 @@ export class CartService {
       this.updateCartCount(items.length);
      
     });
+  }
+  clearCart() {
+    const token = localStorage.getItem('jwtToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+     });
+    return this.http.delete(`${this.apiUrl}/clear`,{headers});
+   
   }
 }

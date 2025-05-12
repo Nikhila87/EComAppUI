@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { CartItem } from '../models/cart-item.model';
+import { CheckoutService } from '../services/checkout.service';
 
 @Component({
   selector: 'app-cart',
@@ -10,7 +11,7 @@ export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
   totalPrice: number = 0;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService,private checkoutService: CheckoutService) {}
 
   ngOnInit(): void {
 
@@ -27,6 +28,11 @@ export class CartComponent implements OnInit {
       
     });
    
+  }
+  proceedToAddressPage() {
+    // const totalAmount = this.calculateTotal();
+    this.checkoutService.setCheckoutDetails(this.totalPrice, '');
+    // this.router.navigate(['/address']);
   }
 
   loadCart(): void {

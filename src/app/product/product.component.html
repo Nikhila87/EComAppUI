@@ -20,18 +20,33 @@
       <!-- <img mat-card-image src="{{ product.imageUrl }}"> -->
       <img mat-card-image [src]="product.imageUrl.split(',')[0]" alt="Product Image"/>
       <!-- Add to Cart Icon at Bottom -->
-      <button mat-icon-button class="cart-icon" >
+      <!-- <button mat-icon-button class="cart-icon" >
         <mat-icon>shopping_cart</mat-icon>
-      </button>
+      </button> -->
     </div>
 
     <mat-card-title>{{ product.name }}</mat-card-title>
     <mat-card-content>
+      <p>average:{{product.averageratings??'No ratings'}}</p>
       <p>{{ product.description }}</p>
       <h4>Price: Rs.{{ product.price }}</h4>
+      <div class="stars">
+        <div *ngIf="product.averageratings>0 else noratings">
+        <ng-container *ngFor="let star of getStars(product.averageratings)">
+          <span>&#9733;</span> <!-- filled star -->
+        </ng-container>
+      </div>
+        <ng-template #noratings>
+          <p>No Ratings.</p>
+        </ng-template>
+        <!-- <span>No ratings</span>  -->
+      </div>
+   
+     
     </mat-card-content>
+
     <mat-card-actions>
-      <button mat-raised-button color="primary">Buy Now</button>
+      <button mat-raised-button color="primary" (click)="addToCart(product)">Add Cart</button>
       <button mat-raised-button  color="primary"  [routerLink]="['/product', product.id]">View Details</button>
     </mat-card-actions>
   </mat-card>

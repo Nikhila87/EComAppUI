@@ -8,7 +8,7 @@ import { ProductService,Products } from '../services/product.service';
 })
 export class AddproductComponent implements OnInit {
   products:any[]=[];
-  newProduct: Products = {id:0,name: '', description: '', price: 0, imageUrl: '', images: [] };
+  newProduct: Products = {id:0,name: '', description: '', price: 0, imageUrl: '', images: [],averageratings:0 };
   selectedFile: File[] | null = null;
   constructor(private productService:ProductService) { }
 
@@ -58,7 +58,7 @@ addProduct() {
         
       }
     });
-    this.newProduct = { id:0,name: '', description: '', price: 0, imageUrl:'',images:[] };
+    this.newProduct = { id:0,name: '', description: '', price: 0, imageUrl:'',images:[],averageratings:0 };
     this.selectedFile = null;
   });
 }

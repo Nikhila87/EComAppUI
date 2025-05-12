@@ -37,11 +37,13 @@ cartCount=0;
         this.authService.setUserRoleFromToken(`${data.token}`);
             },
             error: (err) => {
-              if (err.status === 401) {
-                this.errorMessage = 'Invalid username or password';
-              } else {
-                this.errorMessage = 'An error occurred. Please try again.';
-              }
+              this.errorMessage=err.error?.message;
+              // if (err.status === 401) {
+              //   alert(err.error?.message);
+              //   // this.errorMessage = 'Invalid username or password';
+              // } else {
+              //   // this.errorMessage = 'An error occurred. Please try again.';
+              // }
               // alert('Login failed:');
             }
           });

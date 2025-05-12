@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -21,7 +21,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import { CartComponent } from './cart/cart.component';
-
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ConfirmemailComponent } from './confirmemail/confirmemail.component';
+import { UseraddressComponent } from './useraddress/useraddress.component';
+import { AddresspageComponent } from './addresspage/addresspage.component';
+import { PaymentComponent } from './payment/payment.component';
+import { SuccessComponent } from './success/success.component';
+import { OrdersComponent } from './orders/orders.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -34,10 +42,19 @@ import { CartComponent } from './cart/cart.component';
     EditComponent,
     AddproductComponent,
     ProductDetailComponent,
-    CartComponent
+    CartComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
+    ConfirmemailComponent,
+    UseraddressComponent,
+    AddresspageComponent,
+    PaymentComponent,
+    SuccessComponent,
+    OrdersComponent
     
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     MatProgressSpinnerModule,
@@ -50,7 +67,7 @@ import { CartComponent } from './cart/cart.component';
     MatToolbarModule,
     MatTableModule,
     MatInputModule,
-
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

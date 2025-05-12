@@ -1,0 +1,44 @@
+<body>
+<!-- <div *ngIf="defaultAddress">
+    <h3><strong>Deliver to this Address:</strong></h3>
+      <p><strong>Name:</strong> {{ defaultAddress.fullName }}</p>
+    <p><strong>Street:</strong> {{ defaultAddress.street }}</p>
+    <p><strong>City:</strong> {{ defaultAddress.city }}</p>
+    <p><strong>Zip Code:</strong> {{ defaultAddress.zipCode }}</p>
+    <p><strong>Country:</strong> {{ defaultAddress.country }}</p>
+    <p>{{ defaultAddress.fullName }} - {{ defaultAddress.street }} - {{ defaultAddress.city }}</p> 
+  </div> -->
+<div *ngIf="selectedAddress">
+    <h3><strong>Deliver to this address</strong></h3>
+    <p><strong>Name:</strong> {{ selectedAddress.fullName }}</p>
+    <p><strong>Street:</strong> {{ selectedAddress.street }}</p>
+    <p><strong>City:</strong> {{ selectedAddress.city }}</p>
+    <p><strong>Zip Code:</strong> {{ selectedAddress.zipCode }}</p>
+    <p><strong>Country:</strong> {{ selectedAddress.country }}</p>
+  </div>
+  <div style="display:inline-flex;font-family: Josefin Sans;"><h4 style="padding-right:15px;font-weight: bold;"><a  style="color: blue; height:auto;font-size: medium;padding-left:15px;" (click)="showAddressList = !showAddressList">Change</a></h4> <a routerLink="/my-addresses" style="color: blue;height:auto;font-size: medium;padding-left:15px;">  Add a new Address</a></div>
+
+  <div *ngIf="showAddressList">
+<div *ngFor="let address of addresses" class="address-container">
+  <div class="address-item">
+
+    <input type="radio" name="address" [value]="address.id" [(ngModel)]="selectedAddressId"/>
+  <div class="address-details">
+   <strong>{{ address.fullName }} </strong>
+ 
+  <p>{{ address.street }},{{ address.city }},{{ address.zipCode }}</p>
+
+  <a style="color:blue"
+  *ngIf="!address.IsDefault"
+  (click)="setAsDefault(address.id)">
+  Set as Default
+  
+</a>
+</div>
+</div>
+</div>
+  </div>
+
+<button type="button" routerLink='/paymentpage' (click)="proceedToPaymentPage()" mat-button>Proceed to Payment</button>
+
+</body>

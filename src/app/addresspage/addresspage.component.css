@@ -1,0 +1,25 @@
+body{
+    font-family: 'Josefin Sans', sans-serif !important;
+}
+h4,h3
+{
+    font-family: 'Josefin Sans', sans-serif !important;
+}
+.address-container {
+    margin-bottom: 10px;
+  }
+  
+  .address-item {
+    display: flex;
+    align-items: center; /* vertical center */
+    gap: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .address-details {
+    display: flex;
+    flex-direction: column;
+  }
+  

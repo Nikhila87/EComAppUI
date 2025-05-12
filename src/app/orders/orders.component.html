@@ -1,0 +1,32 @@
+<div *ngFor="let order of orders">
+    <h3>Order #{{ order.orderId }}</h3>
+    <p>Total: ₹{{ order.totalAmount }}</p>
+    <p>Date: {{order.createdAt}}</p>
+    <!-- <pre>{{ order | json }}</pre> -->
+    <div *ngFor="let item of order.items" class="order-item">
+        <img [src]="item.imageUrl.split(',')[0]" width="100" />
+        <p>{{ item.productName }}</p>
+        <!-- <p>Quantity: {{ item.quantity }}</p>
+        <p>Price:₹{{ item.price * item.quantity }}</p> -->
+        <button (click)="openReviewModal(item.productId)">Review</button>
+    </div>
+    <hr />
+  </div>
+
+  <!-- Review Modal -->
+  <ng-template #reviewModal let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title">Write a Review</h5>
+      <button type="button" class="close" (click)="modal.dismiss()">×</button>
+    </div>
+    <div class="modal-body">
+      <form #reviewForm="ngForm">
+        <textarea [(ngModel)]="review.comment" name="comment" placeholder="Write your review..." required></textarea>
+        <input type="number" [(ngModel)]="review.rating" name="rating" placeholder="Rating (1-5)" min="1" max="5" required />
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button (click)="submitReview(modal)" [disabled]="!reviewForm.valid">Submit</button>
+    </div>
+  </ng-template>
+  

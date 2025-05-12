@@ -3,8 +3,13 @@
     display: inline-block;
     overflow: hidden;
     color:black;
+    height:20rem;
   }
-  
+  .image-container img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit:contain
+  }
   /* Cart Icon Styling */
   .cart-icon {
     position: absolute;
@@ -29,16 +34,19 @@
   .image-container:hover .cart-icon {
     transform: translateX(-70%); /* Moves to the left */
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3); /* Adds depth */
+
   }
   
   /* Mat Icon Styling */
   .cart-icon mat-icon {
-    font-size: 22px;
+    font-size: 29px;
   }
   mat-button
   {
     color:white;
+    line-height:36px !important
   }
+
   .product-container {
     display: flex;
     flex-wrap: wrap;

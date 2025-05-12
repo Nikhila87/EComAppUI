@@ -7,7 +7,7 @@ import { ProductService,Products } from '../services/product.service';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
-  selectedProduct:Products= {id:0,name: '', description: '', price: 0, imageUrl: '',images:[] };;
+  selectedProduct:Products= {id:0,name: '', description: '', price: 0, imageUrl: '',images:[],averageratings:0 };;
   products:any[]=[];
   constructor(private productService:ProductService) { }
 

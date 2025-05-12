@@ -5,7 +5,42 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+     font-family: 'Josefin Sans' 
   }
+  h1,h2,h3{
+    font-family: 'Josefin Sans' !important;
+  }
+
+  .success-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #dbe4ec;
+  }
+  
+  .success-card {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    max-width: 450px;
+    width: 100%;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .success-card h2 {
+    color: rgb(248, 61, 92);
+    margin-bottom: 20px;
+  }
+  
+  .order-info p {
+    margin: 10px 0;
+    color: #333;
+    font-size: 16px;
+  }
+  
 /* html,.mat-typography {
     font-family: var(--main-font) !important; height: 100%; } */
 body {
@@ -80,8 +115,8 @@ input {
   }
 .mat-button, .mat-toolbar, .mat-card, .mat-menu-item, .mat-list-item {
     font-family: var(--main-font) !important;
-    background-color:  #ff4d4d;;
-    /* color:white; */
+    background-color:  #ff4d4d;
+    color:white;
   }
   .spinner-container {
     display: flex;
@@ -127,7 +162,7 @@ input {
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-    background-color: black;
+    background-color:   #ff4d4d;
     color: white;
     font-family: 'Josefin Sans', sans-serif;
   }
@@ -172,7 +207,7 @@ input {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
     transition: all 0.3s ease-in-out;
-   
+   color: #000;
    
   }
   .mat-card:hover {

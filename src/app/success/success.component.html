@@ -1,0 +1,12 @@
+<div *ngIf="orderDetails" class="success-wrapper">
+  <div class="success-card">
+    <h2>Payment Successful!</h2>
+    <p>Thank you, {{ orderDetails.fullName }}!</p>
+    <div class="order-info">
+      <p><strong>Order ID:</strong> {{ orderDetails.id }}</p>
+      <p><strong>Total:</strong> ₹{{ orderDetails.totalAmount }}</p>
+      <p><strong>Shipping:</strong> {{ orderDetails.street }}, {{ orderDetails.city }}, {{ orderDetails.country }}</p>
+      <p><strong>Date:</strong> {{ orderDetails.createdAt | date:'short' }}</p>
+    </div>
+    </div>
+  </div>

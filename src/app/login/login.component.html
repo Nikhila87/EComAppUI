@@ -4,7 +4,10 @@
     <input type="text" [(ngModel)]="username" placeholder="Username">
     <input type="password" [(ngModel)]="password" placeholder="Password">
     <button mat-button (click)="login()">Login</button>
+    <!-- <button mat-button  [routerLink]="['/forgot-password']">Forgot Password</button> -->
+
   </div>
+  <a routerLink="/forgot-password" style="color: blue;">Forgot Password?</a>
   <div *ngIf="errorMessage" class="alert alert-danger">
   {{ errorMessage }}
 </div>

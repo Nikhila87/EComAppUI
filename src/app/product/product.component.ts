@@ -13,7 +13,7 @@ import { CartService } from '../services/cart.service';
 
 export class ProductComponent implements OnInit {
   // products:any[]=[];
-  newProduct: Products = {id:0,name: '', description: '', price: 0, imageUrl: '',images:[] };
+  newProduct: Products = {id:0,name: '', description: '', price: 0, imageUrl: '',images:[],averageratings:0 };
 cartCount=0;
 
 @Input() searchResults: Products[] = [];
@@ -71,6 +71,7 @@ cartCount=0;
   loadAllProducts() {
     this.loading = true;
     this.productService.getProducts().subscribe(products => {
+    
       this.products = products;
       this.allProducts=products
         this.products = this.allProducts.slice(0, this.pageSize);
@@ -118,7 +119,7 @@ loadNextPage() {
   setTimeout(() => {
     this.pageSize += 10;
   this.productService.getProducts().subscribe(products => {
-    this.products = [...this.products, ...products];
+    this.products = [...products];
     this.loading = false;
   });
 },4000);
@@ -142,6 +143,16 @@ loadPreviousPage() {
     this.updatePagedProducts();  
   }
 }
+getStars(rating: number): number[] {
+  // alert(rating);
+  return Array(Math.round(rating)).fill(0);
+}
+addToCart(product: any) {
+  this.cartService.refreshCartCount();
+  this.cartService.addToCart(product);
+  this.cartService.refreshCartCount();
+}
+
 }
    
 

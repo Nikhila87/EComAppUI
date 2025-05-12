@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService} from '../services/product.service';
+import { ReviewService } from '../services/review.service';
 import { MOCK_PRODUCTS } from '../MockProducts';
+import { Review } from '../models/review.model'; // adjust path
 
 import { CartService } from '../services/cart.service';
 @Component({
@@ -14,9 +16,16 @@ export class ProductDetailComponent implements OnInit {
 
   currentImageIndex: number = 0;
   defaultImage: string = 'assets/DSC01271.jpg'; 
+  newReview: Review = {
+    productId: 0, // set it in ngOnInit
+    userId: '',
+    rating: 0,
+    comment: ''
+  };
+  reviews: Review[] = [];
+ 
 
-
-  constructor(private route: ActivatedRoute, private productService: ProductService,private cartService: CartService) {}
+  constructor(private route: ActivatedRoute, private productService: ProductService,private cartService: CartService,private reviewService:ReviewService) {}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -24,7 +33,7 @@ export class ProductDetailComponent implements OnInit {
       this.productService.getProductById(id).subscribe((data) => {
         this.product = data;
   
-        // ✅ Ensure product has images
+      
         if (this.product.imageUrl) {
           this.product.images = this.product.imageUrl.split(',').map((img:string) => img.trim()); // Convert to array
         } else {
@@ -35,9 +44,27 @@ export class ProductDetailComponent implements OnInit {
         this.product = { images: [this.defaultImage] }; // Fallback on error
       });
     }
+    const rid = this.route.snapshot.params['id'];
+
+    this.newReview.productId = rid;
+    this.loadReviews(rid);
+
+  }
+ 
+  submitReview() {
+    this.reviewService.addReview(this.newReview).subscribe(() => {
+      this.newReview = { productId: this.newReview.productId, userId: '', rating: 0, comment: '' };
+
+      this.loadReviews(this.newReview.productId);
+    });
   }
   
+  loadReviews(productId: number) {
+    this.reviewService.getReviews(productId).subscribe(data => {
 
+      this.reviews = data;
+    });
+  }
   nextImage(): void {
     if (this.product?.images?.length) {
       this.currentImageIndex = (this.currentImageIndex + 1) % this.product.images.length;
@@ -53,9 +80,9 @@ export class ProductDetailComponent implements OnInit {
 
 
   addToCart(product: any) {
-    this.cartService.refreshCartCount();
+    // this.cartService.refreshCartCount();
     this.cartService.addToCart(product);
-    
+    this.cartService.refreshCartCount();
   }
 
 

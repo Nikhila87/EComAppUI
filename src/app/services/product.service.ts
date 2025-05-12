@@ -9,14 +9,15 @@ export interface Products {
   description: string;
   price: number;
   imageUrl: string;
-images:string[]
+images:string[];
+averageratings:number;
 }
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-// private apiUrl="https://localhost:5001/api/Products";
-private apiUrl="https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/Products";
+private apiUrl="https://localhost:5001/api/Products";
+// private apiUrl="https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/Products";
   constructor(private http:HttpClient) { }
   getProducts(): Observable<Products[]> {
     return this.http.get<Products[]>(this.apiUrl).pipe(
@@ -24,6 +25,7 @@ private apiUrl="https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azureweb
         return products.map(product => {
           if (!product.images || product.images.length === 0) {
             product.images = [product.imageUrl];
+           
           }
           return product;
         });
