@@ -17,8 +17,8 @@ export interface RegisterModel {
   providedIn: 'root'
 })
 export class AuthService {
-  // private apiUrl = 'https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/auth'; //azure url
-   private apiUrl = "https://localhost:5001/api/auth";
+  private apiUrl = 'https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/auth'; //azure url
+  //  private apiUrl = "https://localhost:5001/api/auth";
   private jwtHelper = new JwtHelperService(); 
 
   constructor(private http: HttpClient, private router: Router,private cartService:CartService) {}

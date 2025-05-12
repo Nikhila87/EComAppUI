@@ -11,8 +11,8 @@ import { CartItem } from '../models/cart-item.model';
 export class CartService {
   private cartItems: any[] = [];
   // private cartCountSubject = new BehaviorSubject<number>(this.getSavedCartCount());
-  // private apiUrl = 'https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/Cart'; // 🔁 Update if needed
-  private apiUrl = "https://localhost:5001/api/Cart";
+  private apiUrl = 'https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/Cart'; // 🔁 Update if needed
+  // private apiUrl = "https://localhost:5001/api/Cart";
   // cartCount$ = this.cartCountSubject.asObservable();
   private cartCountSubject = new BehaviorSubject<number>(0);
   cartCount$ = this.cartCountSubject.asObservable();

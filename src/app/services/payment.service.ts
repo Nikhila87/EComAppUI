@@ -8,7 +8,8 @@ import { Address } from '../models/address.model';
 })
 export class PaymentService {
 
-  private baseUrl = 'https://localhost:5001/api/payment';
+  // private baseUrl = 'https://localhost:5001/api/payment';
+   private baseUrl = 'https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/payment';
   shippingAddress = {
  
     fullName: '',

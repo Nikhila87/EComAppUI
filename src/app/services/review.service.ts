@@ -6,7 +6,7 @@ import { Review } from '../models/review.model';
 @Injectable({ providedIn: 'root' })
 export class ReviewService {
   private apiUrl = 'https://localhost:5001/api/ProductReview';
-
+ private baseUrl = 'https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net//api/ProductReview';
   constructor(private http: HttpClient) {}
 
   getReviews(productId: number): Observable<Review[]> {
