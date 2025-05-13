@@ -46,7 +46,7 @@ export class ResetPasswordComponent {
       }
       const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-      this.http.post('https://localhost:5001/api/auth/reset-password?email=' + email + '&token=' + token, 
+      this.http.post('https://ecomapp-cphjc3bwczfra6fu.southeastasia-01.azurewebsites.net/api/auth/reset-password?email=' + email + '&token=' + token, 
         {newPassword: this.resetForm.value.newPassword,email:email,token:token}, { headers })
     .subscribe({
         next: () => {

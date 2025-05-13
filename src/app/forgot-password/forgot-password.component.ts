@@ -21,12 +21,12 @@ export class ForgotPasswordComponent {
   onSubmit() {
     if (this.forgotForm.valid) {
       
-      this.http.post('https://localhost:5001/api/auth/forgot-password', this.forgotForm.value)
+      this.http.post('https://ecomapp-cphjc3bwczfra6fu.southeastasia-01.azurewebsites.net/api/auth/forgot-password', this.forgotForm.value)
         .subscribe({
           next: (res: any) => {
             console.log(res.resetLink);
             this.resetLink = res.resetLink;
-            this.successMessage = 'Reset link sent to your email (or check backend console if in dev).';
+            this.successMessage = 'Reset link sent to your email.';
           },
           error: err => {
             this.errorMessage = err.error || 'Something went wrong!';
