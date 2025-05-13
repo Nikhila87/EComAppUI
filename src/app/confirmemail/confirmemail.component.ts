@@ -25,8 +25,8 @@ export class ConfirmemailComponent implements OnInit {
   // this.router.navigate(['/confirm-email'], {
   //   queryParams: { token: tokenEncoded, email: emailEncoded }
   // });
-  // this.http.get('https://localhost:5001/api/auth/confirm-email?email=' + emailEncoded + '&token=' + tokenEncoded,{headers})
-  this.http.post('https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/auth/confirm-email?email=' + email+ '&token=' + tokenEncoded,body)
+  // this.http.post('https://localhost:5001/api/auth/confirm-email?email=' + email + '&token=' + tokenEncoded,{headers})
+  this.http.post('https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/auth/confirm-email?email=' + email+ '&token=' + tokenEncoded,{headers})
   .subscribe({
       next: () => this.message = 'Email confirmed!',
       error: (err) => {console.log(err);this.message = 'Invalid or expired link.'}
