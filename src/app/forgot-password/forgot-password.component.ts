@@ -26,10 +26,10 @@ export class ForgotPasswordComponent {
           next: (res: any) => {
             console.log(res.resetLink);
             this.resetLink = res.resetLink;
-            this.successMessage = 'Reset link sent to your email.';
+            this.successMessage=res.message;
           },
           error: err => {
-            this.errorMessage = err.error || 'Something went wrong!';
+            this.errorMessage = err.error?.message|| 'Something went wrong!';
           }
         });
     }

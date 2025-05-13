@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -10,7 +10,12 @@ export class OrderService {
   constructor(private http:HttpClient) { }
   getMyOrders()
   {
-    
-    return this.http.get(`${this.apiUrl}/my-orders`)
+         const token = localStorage.getItem('jwtToken'); // ✅ Get Token
+         alert(token);
+            const headers = new HttpHeaders({
+              Authorization: `Bearer ${token}`
+            });
+           
+    return this.http.get(`${this.apiUrl}/my-orders`,{headers})
   }
 }
