@@ -12,7 +12,7 @@ export class ConfirmemailComponent implements OnInit {
   constructor(private http:HttpClient,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    alert("confirm component");
+ 
     const email = this.route.snapshot.queryParamMap.get('email') ?? '';;
     const token = this.route.snapshot.queryParamMap.get('token') ?? '';;
     const tokenEncoded = encodeURIComponent(token);
