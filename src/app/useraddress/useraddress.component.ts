@@ -49,7 +49,7 @@ export class UseraddressComponent implements OnInit {
         alert("address added")
         // this.loadAddresses(); // Refresh list
         this.newAddress = { id:0,fullName: '', street: '', city: '', state: '', country: '', zipCode: '',IsDefault:false }; // Reset form
-      this.router.navigate(['/Address']);
+      this.router.navigate(['/addresspage']);
       },
       error: err => console.error(this.newAddress)
     });

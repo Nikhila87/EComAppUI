@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { Address } from '../models/address.model';
@@ -26,9 +26,13 @@ export class PaymentService {
       totalAmount: amount,
       shippingAddress: shippingAddress  
     };
-    return this.http.post<{ sessionUrl: string }>(`${this.baseUrl}/payment`, requestBody);
+        const token = localStorage.getItem('jwtToken');
+            const headers = new HttpHeaders({
+              Authorization: `Bearer ${token}` 
+            });
+    return this.http.post<{ sessionUrl: string }>(`${this.baseUrl}/payment`, requestBody,{headers});
   }
   getOrderBySessionId(sessionId: string): Observable<any> {
-    return this.http.get(`https://localhost:5001/api/payment/order/${sessionId}`);
+    return this.http.get(`https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/payment/order/${sessionId}`);
   }
 }
