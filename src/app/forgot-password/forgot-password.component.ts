@@ -21,7 +21,7 @@ export class ForgotPasswordComponent {
   onSubmit() {
     if (this.forgotForm.valid) {
       
-      this.http.post('https://ecomapp-cphjc3bwczfra6fu.southeastasia-01.azurewebsites.net/api/auth/forgot-password', this.forgotForm.value)
+      this.http.post('https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/auth/forgot-password', this.forgotForm.value)
         .subscribe({
           next: (res: any) => {
             console.log(res.resetLink);
