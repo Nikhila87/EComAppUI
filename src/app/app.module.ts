@@ -14,7 +14,7 @@ import { DeleteComponent } from './delete/delete.component';
 import { EditComponent } from './edit/edit.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -31,7 +31,8 @@ import { PaymentComponent } from './payment/payment.component';
 import { SuccessComponent } from './success/success.component';
 import { OrdersComponent } from './orders/orders.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +69,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatToolbarModule,
     MatTableModule,
     MatInputModule,
-    NgbModule
+    NgbModule,
+
+    ToastrModule.forRoot(),
   ],
    providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

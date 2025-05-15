@@ -22,7 +22,7 @@
   </div>
 
   <div class="review-section">
-    <h3>Add a Review</h3>
+    <!-- <h3>Add a Review</h3>
     <form (ngSubmit)="submitReview()" #reviewForm="ngForm">
       <input
         type="text"
@@ -45,12 +45,26 @@
       ></textarea>
   
       <button type="submit" [disabled]="!reviewForm.form.valid">Submit Review</button>
-    </form>
+    </form> -->
   
-    <div *ngFor="let r of reviews" class="review-item">
-      <strong>{{ r.userId }}</strong> - ★{{ r.rating }}<br />
-      {{ r.comment }}
-    </div>
+
   </div>
+    <strong>Reviews</strong><br />
+    <div *ngFor="let r of reviews" class="review-item"> 
+       <strong>{{ r.userId }} — Given on {{ r.createdAt | date:'mediumDate' }}</strong>
   
+
+  <!-- ⭐ Star Rating -->
+  <div class="stars mb-2 text-warning">
+    <ng-container *ngFor="let star of [1,2,3,4,5]">
+      <i
+        class="fa"
+        [ngClass]="{
+          'fa-star': star <= r.rating,
+          'fa-star-o': star > r.rating
+        }"
+      ></i>
+    </ng-container>
+  </div>
+   <p class="mb-0">{{ r.comment }}</p>
 </div>

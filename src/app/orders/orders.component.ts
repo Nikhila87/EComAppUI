@@ -11,8 +11,10 @@ import { OrderService } from '../services/order.service';
 export class OrdersComponent implements OnInit {
 
   orders:Order[] = []; // fetched from API
+  stars = [1, 2, 3, 4, 5];
   review = { userId:'',comment: '', rating: 0, productId: 0 };
-  @ViewChild('reviewModal') reviewModal: any;
+  // @ViewChild('reviewModal') reviewModal: any;
+    showModal = false;
 
   constructor(private modalService: NgbModal, private reviewService: ReviewService,private orderService:OrderService) {}
   ngOnInit(): void {
@@ -25,18 +27,27 @@ export class OrdersComponent implements OnInit {
     // throw new Error('Method not implemented.');
   }
 
+setRating(rating: number) {
+  this.review.rating = rating;
+}
   openReviewModal(order: any) {
     
     this.review = { userId:'',comment: '', rating: 0, productId: order };
-    this.modalService.open(this.reviewModal);
+    // this.modalService.open(this.reviewModal, { backdrop: 'static', centered: true });
+      this.showModal = true;
   }
 
-  submitReview(modal: any) {
+  submitReview() {
    
     this.reviewService.addReview(this.review).subscribe(() => {
-      modal.close();
+      // modal.close();
+         this.closeCustomModal();
       alert('Review submitted successfully!');
     });
+  }
+  
+  closeCustomModal() {
+    this.showModal = false;
   }
 }
 

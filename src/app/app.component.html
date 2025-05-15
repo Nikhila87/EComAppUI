@@ -561,6 +561,9 @@
   <a routerLink="/delete">Delete</a>
 </ng-template> -->
 </mat-toolbar>
+<div class="simple-toast" *ngIf="toastMessage" [ngClass]="toastType">
+  {{ toastMessage }}
+</div>
 <router-outlet></router-outlet>
 
 

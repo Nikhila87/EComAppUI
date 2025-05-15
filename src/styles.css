@@ -435,3 +435,25 @@ color:white;
         font-family: var(--main-font) !important;
       }
   }
+  .simple-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #333;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  z-index: 9999;
+  font-weight: bold;
+  animation: fadeIn 0.5s ease;
+}
+
+.simple-toast.success { background-color: #4caf50; }
+.simple-toast.error { background-color: #f44336; }
+.simple-toast.info { background-color: #2196f3; }
+.simple-toast.warning { background-color: #ff9800; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}

@@ -4,6 +4,8 @@ import { Address } from '../models/address.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
 import { getUsernameFromToken } from '../token_helper';
+import { ToastrService } from 'ngx-toastr';
+import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-useraddress',
@@ -26,7 +28,7 @@ export class UseraddressComponent implements OnInit {
     IsDefault:false
   };
 
-  constructor(private addressService: AddressService,private router:Router) { }
+  constructor(private addressService: AddressService,private router:Router,private toastr: ToastrService,private toastService: ToastService) { }
 
   ngOnInit(): void {
     this.username = getUsernameFromToken();
@@ -45,9 +47,8 @@ export class UseraddressComponent implements OnInit {
     this.addressService.addAddress(this.newAddress).subscribe({
      
       next: () => {
-       
-        alert("address added")
-        // this.loadAddresses(); // Refresh list
+          this.toastService.show('Address added', 'success');
+
         this.newAddress = { id:0,fullName: '', street: '', city: '', state: '', country: '', zipCode: '',IsDefault:false }; // Reset form
       this.router.navigate(['/addresspage']);
       },
