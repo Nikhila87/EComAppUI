@@ -6,8 +6,8 @@ import { Address } from '../models/address.model';
   providedIn: 'root'
 })
 export class AddressService {
-  private baseUrl = "https://localhost:5001/api/Address";
-  // private baseUrl ="https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/Address";
+  // private baseUrl = "https://localhost:5001/api/Address";
+  private baseUrl ="https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/Address";
   constructor(private http: HttpClient) {}
 
   getUserAddresses(user:string): Observable<Address[]> {
