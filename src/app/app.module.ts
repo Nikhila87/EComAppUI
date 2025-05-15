@@ -33,6 +33,8 @@ import { OrdersComponent } from './orders/orders.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProfileComponent } from './profile/profile.component';
+import { AddresslistComponent } from './addresslist/addresslist.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +54,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AddresspageComponent,
     PaymentComponent,
     SuccessComponent,
-    OrdersComponent
+    OrdersComponent,
+    ProfileComponent,
+    AddresslistComponent
     
   ],
   imports: [

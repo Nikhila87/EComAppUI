@@ -1,0 +1,7 @@
+<div *ngFor="let address of addresses" class="address-item">
+  <p><strong>{{ address.fullName }}</strong></p>
+  <p>{{ address.street }}, {{ address.city }}, {{ address.zipCode }}</p>
+
+  <button mat-button color="warn" style="cursor:pointer;color:white" (click)="deleteAddress(address.id)">Delete</button>
+</div>
+

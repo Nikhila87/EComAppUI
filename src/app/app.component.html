@@ -523,6 +523,7 @@
     <button mat-icon-button>
       <mat-icon [routerLink]="['/']">home</mat-icon>
     </button>
+        <button  mat-button  routerLink="/profile" style="right: 272px;position: absolute;top: 100px;">Profile</button>
     <span class="spacer"></span>
    
  <div  *ngIf="authService.isAuthenticated(); else loginTemplate">
@@ -534,6 +535,7 @@
     <a   *ngIf="router.url!='/product'" routerLink="/product">View Product</a>
     <a  *ngIf="router.url!='/delete'  && authService.isAdmin()" routerLink="/delete">Delete Products</a>
    
+
     <button  mat-button (click)="authService.logout()" style="right:70px;position:absolute;top:100px ">Logout</button> 
     <button  mat-button routerLink="/myorders" style="right:160px;position:absolute;top:100px ">My Orders</button> 
   </div>

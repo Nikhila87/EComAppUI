@@ -20,7 +20,11 @@ import { AddresspageComponent } from './addresspage/addresspage.component';
 import { PaymentComponent } from './payment/payment.component';
 import { SuccessComponent } from './success/success.component';
 import { OrdersComponent } from './orders/orders.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AddresslistComponent } from './addresslist/addresslist.component';
 const routes: Routes = [ 
+    { path: 'profile', component: ProfileComponent },
+     { path: 'addresslist', component: AddresslistComponent },
    { path: 'login', component: LoginComponent},
    { path: 'product', component: ProductComponent},
   { path: 'search/:name', component: ProductComponent } ,
