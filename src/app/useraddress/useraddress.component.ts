@@ -27,10 +27,14 @@ export class UseraddressComponent implements OnInit {
     zipCode: '',
     IsDefault:false
   };
+source: string = '';
 
-  constructor(private addressService: AddressService,private router:Router,private toastr: ToastrService,private toastService: ToastService) { }
+  constructor(private addressService: AddressService,private router:Router,private toastr: ToastrService,private toastService: ToastService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+     this.route.queryParams.subscribe(params => {
+    this.source = params['from'];
+  });
     this.username = getUsernameFromToken();
     if (this.username) {
       this.loadAddresses(this.username);
@@ -47,10 +51,17 @@ export class UseraddressComponent implements OnInit {
     this.addressService.addAddress(this.newAddress).subscribe({
      
       next: () => {
+    
           this.toastService.show('Address added', 'success');
-
+if (this.source === 'payment') {
+alert(this.source)
+    this.router.navigate(['/addresspage']);
+  } else {
+    this.router.navigate(['/#']); // or wherever appropriate
+  }
+   this.addressService.triggerRefresh();
         this.newAddress = { id:0,fullName: '', street: '', city: '', state: '', country: '', zipCode: '',IsDefault:false }; // Reset form
-      this.router.navigate(['/addresspage']);
+
       },
       error: err => console.error(this.newAddress)
     });

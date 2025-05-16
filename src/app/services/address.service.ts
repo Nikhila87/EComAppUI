@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Address } from '../models/address.model';
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,12 @@ import { Address } from '../models/address.model';
 export class AddressService {
   // private baseUrl = "https://localhost:5001/api/Address";
   private baseUrl ="https://ecom-api-test-e5g9ccfwfjdufyh8.southeastasia-01.azurewebsites.net/api/Address";
+   private refreshListSubject = new Subject<void>();
+  refreshList$ = this.refreshListSubject.asObservable();
+
+  triggerRefresh() {
+    this.refreshListSubject.next();
+  }
   constructor(private http: HttpClient) {}
 
   getUserAddresses(user:string): Observable<Address[]> {
@@ -46,5 +52,12 @@ export class AddressService {
           Authorization: `Bearer ${token}`
          });
   return this.http.delete(`${this.baseUrl}/${id}`,{headers});
+}
+updateAddress(id: number, address: Address) {
+      const token = localStorage.getItem('jwtToken');
+        const headers = new HttpHeaders({
+          Authorization: `Bearer ${token}`
+         });
+  return this.http.put<Address>(`${this.baseUrl}/${id}`, address,{headers});
 }
 }

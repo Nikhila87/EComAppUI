@@ -11,4 +11,21 @@
   input{
     width:300px;
   }
-  
+  .profile-icon-wrapper {
+  cursor: pointer;
+  overflow:hidden;
+    
+}
+.transparentbg{
+  background-color: transparent !important;
+  color:black
+}
+.transparentbg:hover{
+  background-color: black !important;
+  color:white;
+ 
+}
+::ng-deep .mat-menu-panel {
+  overflow: hidden !important;
+  max-height: none !important;
+}

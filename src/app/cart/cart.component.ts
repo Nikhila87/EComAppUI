@@ -3,6 +3,7 @@ import { CartService } from '../services/cart.service';
 import { CartItem } from '../models/cart-item.model';
 import { CheckoutService } from '../services/checkout.service';
 
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -32,6 +33,7 @@ export class CartComponent implements OnInit {
   proceedToAddressPage() {
     // const totalAmount = this.calculateTotal();
     this.checkoutService.setCheckoutDetails(this.totalPrice, '');
+
     // this.router.navigate(['/address']);
   }
 

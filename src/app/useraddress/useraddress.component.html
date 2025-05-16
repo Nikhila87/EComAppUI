@@ -1,21 +1,44 @@
-<h2>Your Addresses</h2>
-
+<!-- <h2>Your Addresses</h2> -->
+<!-- 
 <ul>
   <li *ngFor="let addr of addresses">
     <strong>{{ addr.fullName }}</strong><br />
     {{ addr.street }}, {{ addr.city }}, {{ addr.state }}<br />
     {{ addr.country }} - {{ addr.zipCode }}
   </li>
-</ul>
-
+</ul> -->
+<mat-accordion multi="true">
+  <!-- Add New Address Form -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        ➕ Add New Address
+      </mat-panel-title>
+    </mat-expansion-panel-header>
 <h3>Add New Address</h3>
-<form (ngSubmit)="addAddress()">
+<form>
   <input type="text" [(ngModel)]="newAddress.fullName" name="fullName" placeholder="Full Name" required />
   <input type="text" [(ngModel)]="newAddress.street" name="street" placeholder="Street" required />
   <input type="text" [(ngModel)]="newAddress.city" name="city" placeholder="City" required />
   <input type="text" [(ngModel)]="newAddress.state" name="state" placeholder="State" required />
   <input type="text" [(ngModel)]="newAddress.country" name="country" placeholder="Country" required />
   <input type="text" [(ngModel)]="newAddress.zipCode" name="zipCode" placeholder="Zip Code" required />
-  <button type="submit">Add Address</button>
-</form>
+  <button mat-button (click)="addAddress()">Add Address</button>
+</form>    
+</mat-expansion-panel>
 
+  <!-- Existing Address List -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        📦 Saved Addresses
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-addresslist></app-addresslist>
+</mat-expansion-panel>
+</mat-accordion>
+
+
+    <div>
+
+</div>

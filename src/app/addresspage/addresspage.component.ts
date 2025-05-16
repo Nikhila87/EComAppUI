@@ -5,6 +5,7 @@ import { Address } from '../models/address.model';
 import { CheckoutService } from '../services/checkout.service';
 import { ToastService } from '../services/toast.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 // import { UseraddressComponent } from '../useraddress/useraddress.component';
 
 @Component({
@@ -19,7 +20,7 @@ export class AddresspageComponent implements OnInit {
   showAddressList = false;
   defaultAddress!: Address;
 
-  constructor(private addressService:AddressService,private checkoutService: CheckoutService,private toastService:ToastService) { }
+  constructor(private addressService:AddressService,private checkoutService: CheckoutService,private toastService:ToastService,private router:Router) { }
 
   ngOnInit(): void {
      this.username = getUsernameFromToken();
@@ -95,6 +96,7 @@ proceedToPaymentPage() {
     
 
   this.checkoutService.setCheckoutDetails(currentAmount, selectedAddress);
+      //  this.router.navigate(['/my-addresses'], { queryParams: { from: 'payment' } });
   // this.router.navigate(['/payment']);
 }
 setAsDefault(addressId: number) {

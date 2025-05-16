@@ -14,6 +14,7 @@ import { DeleteComponent } from './delete/delete.component';
 import { EditComponent } from './edit/edit.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -35,6 +36,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileComponent } from './profile/profile.component';
 import { AddresslistComponent } from './addresslist/addresslist.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +64,7 @@ import { AddresslistComponent } from './addresslist/addresslist.component';
   imports: [
     ReactiveFormsModule,
     BrowserModule,
+    MatExpansionModule,
     AppRoutingModule,
     MatProgressSpinnerModule,
     HttpClientModule,
@@ -74,7 +77,7 @@ import { AddresslistComponent } from './addresslist/addresslist.component';
     MatTableModule,
     MatInputModule,
     NgbModule,
-
+   MatMenuModule,
     ToastrModule.forRoot(),
   ],
    providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],

@@ -1,7 +1,22 @@
-<div *ngFor="let address of addresses" class="address-item">
+<div *ngFor="let address of addresses ; let i = index" class="address-item">
+      <div *ngIf="editingIndex !== i">
   <p><strong>{{ address.fullName }}</strong></p>
   <p>{{ address.street }}, {{ address.city }}, {{ address.zipCode }}</p>
-
+  <button mat-button  (click)="editAddress(i,address)">Edit</button>&nbsp;&nbsp;
   <button mat-button color="warn" style="cursor:pointer;color:white" (click)="deleteAddress(address.id)">Delete</button>
 </div>
 
+<div *ngIf="editingIndex === i&&editingAddress" class="edit-address-form">
+  <h3>Edit Address</h3>
+  <form (ngSubmit)="updateAddress(i)">
+    <input [(ngModel)]="editingAddress.fullName" name="fullName" placeholder="Full Name" required>
+    <input [(ngModel)]="editingAddress.street" name="street" placeholder="Street" required>
+    <input [(ngModel)]="editingAddress.city" name="city" placeholder="City" required>
+    <input [(ngModel)]="editingAddress.zipCode" name="zipCode" placeholder="Zip Code" required>
+    <input [(ngModel)]="editingAddress.country" name="country" placeholder="Country" required>
+
+    <button mat-button  type="submit">Update</button>&nbsp;&nbsp;
+    <button mat-button type="button" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div>
+</div>
