@@ -54,7 +54,7 @@ source: string = '';
     
           this.toastService.show('Address added', 'success');
 if (this.source === 'payment') {
-alert(this.source)
+
     this.router.navigate(['/addresspage']);
   } else {
     this.router.navigate(['/#']); // or wherever appropriate

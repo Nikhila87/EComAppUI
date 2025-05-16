@@ -30,7 +30,7 @@
         Change
       </a>
     </h4>
-    <a routerLink="/my-addresses" style="color: blue; font-size: medium; padding-left:15px;">
+    <a routerLink="/my-addresses" [queryParams]="{ from: 'payment' }" style="color: blue; font-size: medium; padding-left:15px;">
       Add a new Address
     </a>
   </div>

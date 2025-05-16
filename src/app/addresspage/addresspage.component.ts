@@ -96,7 +96,7 @@ proceedToPaymentPage() {
     
 
   this.checkoutService.setCheckoutDetails(currentAmount, selectedAddress);
-      //  this.router.navigate(['/my-addresses'], { queryParams: { from: 'payment' } });
+       this.router.navigate(['/paymentpage']);
   // this.router.navigate(['/payment']);
 }
 setAsDefault(addressId: number) {
