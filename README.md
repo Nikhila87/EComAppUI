@@ -6,7 +6,7 @@ This is the frontend of **EcomApp**, a demo e-commerce application built using A
 ## Related Repositories
 
 Backend API: [EcomApp API](https://github.com/Nikhila87/EcomApp)
-  Live Application: [https://your-live-site.azurewebsites.net]([https://your-live-site.azurewebsites.net](https://ecomapp-cphjc3bwczfra6fu.southeastasia-01.azurewebsites.net/#/)](https://ecomapp-cphjc3bwczfra6fu.southeastasia-01.azurewebsites.net/#/))
+  Live Application: [https://ecomapp-cphjc3bwczfra6fu.southeastasia-01.azurewebsites.net/#/](https://ecomapp-cphjc3bwczfra6fu.southeastasia-01.azurewebsites.net/#/)
 
 
 
